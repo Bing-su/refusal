@@ -1,14 +1,16 @@
 {
   "name": "refusal",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vp dev",
-    "build": "tsc && vp build",
-    "preview": "vp preview"
+    "dev": "vp pack --watch",
+    "build": "tsc && vp pack",
+    "check": "vp check",
+    "test": "vp run build && vp test run"
   },
   "devDependencies": {
+    "@types/node": "^22",
     "typescript": "~6.0.3",
     "vite": "npm:@voidzero-dev/vite-plus-core@1.2.0",
     "vite-plus": "1.2.0"
