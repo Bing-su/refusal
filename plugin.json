@@ -10,6 +10,8 @@
       "hooks": "./com.openai/hooks/hooks.json",
       "interface": {
         "displayName": "Refusal",
+        "logo": "./assets/icon.svg",
+        "composerIcon": "./assets/icon.svg",
         "shortDescription": "Refuse with reason",
         "longDescription": "Verify concerns, stop only the affected action, continue useful work, and reconsider when the user supplies new context or accepts a risk within their authority.",
         "category": "Productivity",

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Refusal</title>
+  <desc id="desc">A speech bubble with a coral minus and explanation lines, representing a reasoned refusal.</desc>
+  <!-- Pair the boundary mark with explanation lines to convey a reasoned refusal. -->
+  <rect width="128" height="128" rx="28" fill="#172B36"/>
+  <path d="M36 25h56a16 16 0 0 1 16 16v36a16 16 0 0 1-16 16H57l-22 15V93a16 16 0 0 1-15-16V41a16 16 0 0 1 16-16Z" fill="#FFF5E6"/>
+  <path d="M52 46h24" fill="none" stroke="#C4513C" stroke-width="8" stroke-linecap="round"/>
+  <path d="M42 65h44M42 77h28" fill="none" stroke="#172B36" stroke-width="5" stroke-linecap="round"/>
+</svg>
