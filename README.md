@@ -6,6 +6,15 @@ An agent plugin for evidence-based, proportionate refusals. Verify concerns, sto
 
 Install this directory as a plugin in an Agent Plugins-compatible client to use the [refusal skill](skills/refusal/SKILL.md).
 
+For Codex, add this repository as a marketplace and install its plugin:
+
+```sh
+codex plugin marketplace add /absolute/path/to/refusal
+codex plugin add refusal@refusal
+```
+
+The repository includes `.agents/plugins/marketplace.json`, which points to the plugin at the repository root. A root `plugin.json` alone does not make a repository a Codex marketplace.
+
 | Hook               | Context                                          |
 | ------------------ | ------------------------------------------------ |
 | `SessionStart`     | Full refusal principles                          |
