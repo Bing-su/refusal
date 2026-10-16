@@ -99,21 +99,38 @@ describe("compiled Refusal hooks", () => {
     },
   );
 
+  it("keeps metadata synchronized and declares Codex settings only in the compatibility manifest", () => {
+    expect.hasAssertions();
+    const plugin = JSON.parse(readFileSync(new URL("plugin.json", root), "utf8"));
+    const codexPlugin = JSON.parse(
+      readFileSync(new URL(".codex-plugin/plugin.json", root), "utf8"),
+    );
+    const { hooks, interface: pluginInterface, ...metadata } = codexPlugin;
+
+    // Codex 0.163 skips plugin hooks when $schema selects its Agent Plugins loader.
+    expect(plugin).not.toHaveProperty("$schema");
+    expect(plugin).not.toHaveProperty("extensions");
+    expect(metadata).toStrictEqual(plugin);
+    expect({ displayName: pluginInterface.displayName, hooks }).toStrictEqual({
+      displayName: "Refusal",
+      hooks: "./com.openai/hooks/hooks.json",
+    });
+  });
+
   it.each(["SessionStart", "UserPromptSubmit", "SubagentStart"])(
-    "connects the portable manifest to the compiled %s hook",
+    "connects the Codex manifest to the compiled %s hook",
     (hookEventName) => {
       expect.hasAssertions();
-      const plugin = JSON.parse(readFileSync(new URL("plugin.json", root), "utf8"));
-      const hooks = JSON.parse(
-        readFileSync(new URL(plugin.extensions["com.openai"].hooks, root), "utf8"),
+      const codexPlugin = JSON.parse(
+        readFileSync(new URL(".codex-plugin/plugin.json", root), "utf8"),
       );
+      const hooks = JSON.parse(readFileSync(new URL(codexPlugin.hooks, root), "utf8"));
       const [
         {
           hooks: [handler],
         },
       ] = hooks.hooks[hookEventName];
 
-      expect(plugin.$schema).toBe("https://agent-plugins.org/schemas/1.0.0/plugin.schema.json");
       expect(handler.type).toBe("command");
       // The host shell expands PLUGIN_ROOT at execution, e.g. after installation in a cache.
       expect(handler.command).toBe(`node "\${PLUGIN_ROOT}/com.openai/hooks/refusal.mjs"`);

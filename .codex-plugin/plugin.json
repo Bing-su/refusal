@@ -1,0 +1,17 @@
+{
+  "name": "refusal",
+  "version": "0.1.0",
+  "description": "Evidence-based, proportionate refusals that respect the user's goals and decisions.",
+  "license": "BlueOak-1.0.0",
+  "keywords": ["refusal", "judgment", "agent-skills"],
+  "hooks": "./com.openai/hooks/hooks.json",
+  "interface": {
+    "displayName": "Refusal",
+    "logo": "./assets/icon.svg",
+    "composerIcon": "./assets/icon.svg",
+    "shortDescription": "Refuse with reason",
+    "longDescription": "Verify concerns, stop only the affected action, continue useful work, and reconsider when the user supplies new context or accepts a risk within their authority.",
+    "category": "Productivity",
+    "capabilities": []
+  }
+}
